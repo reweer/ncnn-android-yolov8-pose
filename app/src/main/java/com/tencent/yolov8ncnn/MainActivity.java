@@ -28,9 +28,11 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+//import android.support.v4.app.ActivityCompat;
+//import android.support.v4.content.ContextCompat;
 
 public class MainActivity extends Activity implements SurfaceHolder.Callback
 {

@@ -1,16 +1,28 @@
+cmake_minimum_required(VERSION 3.10)
 project(yolov8ncnn)
 
-cmake_minimum_required(VERSION 3.10)
-
-# opencv4 requires c++11
+# Set the C++ standard
 set(CMAKE_CXX_STANDARD 11)
 
-set(OpenCV_DIR ${CMAKE_SOURCE_DIR}/opencv-mobile-4.5.1-android/sdk/native/jni)
-find_package(OpenCV REQUIRED core imgproc)
+# Specify the path to OpenCV and ncnn
+set(OpenCV_DIR /Users/oliwiarewer/AndroidStudioProjects/ncnn-android-yolov8-pose/app/src/main/jni/opencv-mobile-3.4.20-android/sdk/native/jni)
+set(ncnn_DIR /Users/oliwiarewer/AndroidStudioProjects/ncnn-android-yolov8-pose/app/src/main/jni/ncnn-20240820-android-vulkan/arm64-v8a/lib/cmake/ncnn)
+# Specify the path to the NDK
+# Set NDK version 27
+set(ANDROID_NDK /Users/oliwiarewer/Library/Android/sdk/ndk/27.0.12077973)
 
-set(ncnn_DIR ${CMAKE_SOURCE_DIR}/ncnn-20240410-android-vulkan/${ANDROID_ABI}/lib/cmake/ncnn)
+# Include the toolchain file for NDK version 27
+include(${ANDROID_NDK}/build/cmake/android.toolchain.cmake)
+
+# Find OpenCV and ncnn
+find_package(OpenCV REQUIRED)
 find_package(ncnn REQUIRED)
 
+# Add the OpenCV static libraries manually
+
+
+# Add your source files
 add_library(yolov8ncnn SHARED yolov8ncnn.cpp yolov8.cpp ndkcamera.cpp yolov8pose.cpp)
 
+# Link the libraries
 target_link_libraries(yolov8ncnn ncnn ${OpenCV_LIBS} camera2ndk mediandk)
