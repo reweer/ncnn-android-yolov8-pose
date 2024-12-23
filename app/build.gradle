@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     ndkVersion ndkVersion
-    namespace "com.tencent.yolov8ncnn" // Dodaj tę linię
+    namespace "com.tencent.yolov8ncnn"
     compileSdkVersion 33
     // buildToolsVersion "33.0.1" // Opcjonalne, można usunąć
 
